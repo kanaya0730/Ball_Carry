@@ -21,6 +21,7 @@ public class SceneLoader : MonoBehaviour
         [SceneName.Unknown] = "",
         [SceneName.Title] = "Title",
         [SceneName.Game] = "Game",
+        [SceneName.EndLessGame] = "EndLessGame",
         [SceneName.GameOver] = "GameOver",
         [SceneName.GameClear] = "GameClear",
     };

@@ -111,8 +111,7 @@ public class Player : MonoBehaviour
             var clickPos = Input.mousePosition;
             clickPos.z = 5.0f;
 
-            var camera = Camera.main;
-            _mousePos = camera.ScreenToWorldPoint(clickPos);
+            _mousePos = Camera.main.ScreenToWorldPoint(clickPos);
 
             var roadAngle = _road.transform.eulerAngles;
             _createdRoads.Add(Instantiate(_road, _mousePos, Quaternion.Euler(roadAngle)));
@@ -126,7 +125,6 @@ public class Player : MonoBehaviour
         {
             if (_direction == false) _direction = true;
             else _direction = false;
-
         }
     }
 
@@ -137,8 +135,8 @@ public class Player : MonoBehaviour
             if (_direction == true) _changeAngle++;
             else _changeAngle--;
             if (_changeAngle >= 36) _changeAngle = 0;
-            _road.transform.eulerAngles = new Vector3(0f, 0f, -10f * _changeAngle);
-            _shadowRoad.transform.eulerAngles = new Vector3(0f, 0f, -10f * _changeAngle);
+            _road.transform.eulerAngles = new Vector3(0f, 0f, -2f * _changeAngle);
+            _shadowRoad.transform.eulerAngles = new Vector3(0f, 0f, -2f * _changeAngle);
         }
     }
 }

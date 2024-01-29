@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using System.Threading;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -22,6 +24,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private Text _text;
+
     void Start()
     {
         this.UpdateAsObservable()
@@ -31,30 +34,13 @@ public class UIManager : MonoBehaviour
 
     private void TextAssignment()
     {
-        _createRoadText.text = $"{_player.CreateCount.ToString()}/{_player.CreateLimit}";
-        _movingDistanceText.text = $"Socre\n{_ball.MovingDistance.ToString()}km";
-        _highScoreText.text = $"HighScore\n{_ball.HighScore.ToString()}km";
+        _createRoadText.text = $"{_player.CreateCount}/{_player.CreateLimit}";
+        _movingDistanceText.text = $"Socre\n{_ball.MovingDistance}km";
+        _highScoreText.text = $"HighScore\n{_ball.HighScore}km";
 
-        switch(_ball.MovingDistance)
-        {
-            case 25:
-                _text.text = $"なかなかやるじゃん";
-                break;
-            case 50:
-                _text.text = $"さすがに疲れてきたかな";
-                break;
-            case 75:
-                _text.text = $"ここまできたのかすごいな";
-                break;
-            case 100:
-                _text.text = $"三桁まできたじゃん";
-                break;
-            case 125:
-                _text.text = $"まだまだいけるよ！";
-                break;
-            default:
-                _text.text = $"";
-                break;
-        }
+
+        if (_ball.HighScore > _ball.MovingDistance)
+            _text.text = $"HighScore更新まで{_ball.HighScore - _ball.MovingDistance}㎞";
+        else _text.text = $"目指せ150km!!";
     }
 }

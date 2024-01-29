@@ -15,12 +15,18 @@ public class ButtonManager : MonoBehaviour
     [SerializeField]
     private SceneLoader _sceneLoader;
 
+
     private void Start()
     {
-        _startButton.onClick.AsObservable()
-            .Subscribe(_ => _sceneLoader.FadeIn(SceneLoader.SceneName.Game))
-            .AddTo(this);
+        StartButton();
     }
 
+    private void StartButton()
+    {
+        if (_startButton == null) return;
 
+        _startButton.onClick.AsObservable()
+            .Subscribe(_ => _sceneLoader.FadeIn(SceneLoader.SceneName.EndLessGame))
+            .AddTo(this);
+    }
 }

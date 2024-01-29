@@ -1,13 +1,18 @@
 using Cysharp.Threading.Tasks;
 using System;
+using System.Collections.Generic;
 using UniRx;
 using UniRx.Triggers;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
     public int MovingDistance => _movingDistance;
     public int HighScore => _highScore;
+
+    [SerializeField]
+    private List<Sprite> _sprits = new();
 
     [SerializeField]
     private Vector3 _startPos;
@@ -28,6 +33,7 @@ public class Ball : MonoBehaviour
     [SerializeField]
     private UIManager _uiManager;
 
+    private int num;
 
     private void Start()
     {
@@ -40,11 +46,8 @@ public class Ball : MonoBehaviour
             .AddTo(this);
     }
 
-    private async void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        //_spriteRenderer.color = new Color(255f, 0f, 0f);
-        //await UniTask.Delay(TimeSpan.FromSeconds(1.0f));
-        //_spriteRenderer.color = new Color(255f, 255f, 255f);
 
         if (collision.gameObject.name == "DeadLine")
         {
@@ -54,8 +57,15 @@ public class Ball : MonoBehaviour
             {
                 _highScore = _movingDistance;
             }
+
+            if(num == _sprits.Count) num = 0;
+            _spriteRenderer.sprite = _sprits[num];
+            num++;
+
             this.gameObject.transform.position = _startPos;
             this.gameObject.SetActive(true);
+
+
         }
     }
 
