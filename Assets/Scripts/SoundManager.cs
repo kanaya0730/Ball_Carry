@@ -6,10 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     private AudioSource _audioSource;
 
-    void Start()
-    {
-        _audioSource = GetComponent<AudioSource>();
-    }
+    void Start() => _audioSource = GetComponent<AudioSource>();
 
     /// <summary>Œ»İ‚ÌAudio‚ğ•ÏX</summary>
     /// <param name="bgm">•ÏX‚µ‚½‚¢Audio</param>

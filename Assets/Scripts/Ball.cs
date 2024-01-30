@@ -12,20 +12,20 @@ public class Ball : MonoBehaviour
     public int HighScore => _highScore;
 
     [SerializeField]
+    [Header("ボールの種類")]
     private List<Sprite> _sprits = new();
 
     [SerializeField]
+    [Header("初期座標")]
     private Vector3 _startPos;
 
     [SerializeField]
+    [Header("移動距離")]
     private int _movingDistance;
 
     [SerializeField]
+    [Header("移動距離の最大値")]
     private int _highScore;
-
-    private SpriteRenderer _spriteRenderer;
-
-    private Rigidbody2D _rb;
 
     [SerializeField]
     private Player _player;
@@ -33,6 +33,8 @@ public class Ball : MonoBehaviour
     [SerializeField]
     private UIManager _uiManager;
 
+    private SpriteRenderer _spriteRenderer;
+    private Rigidbody2D _rb;
     private int num;
 
     private void Start()
@@ -64,8 +66,6 @@ public class Ball : MonoBehaviour
 
             this.gameObject.transform.position = _startPos;
             this.gameObject.SetActive(true);
-
-
         }
     }
 
@@ -78,9 +78,5 @@ public class Ball : MonoBehaviour
         }
     }
 
-
-    private void CountDistance()
-    {
-        _movingDistance = (int)(this.gameObject.transform.position.x - _startPos.x);
-    }
+    private void CountDistance() => _movingDistance = (int)(this.gameObject.transform.position.x - _startPos.x);
 }

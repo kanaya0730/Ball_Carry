@@ -3,21 +3,19 @@ using UnityEngine;
 public class FollowScreen : MonoBehaviour
 {
     [SerializeField]
+    [Header("カメラで追いかけたいオブジェクト")]
     private GameObject _ball;
 
     private Transform _ballTrans;
 
-    void Start()
+    private void Start()
     {
         _ballTrans = _ball.transform;
     }
 
-    void LateUpdate()
-    {
-        MoveCamera();
-    }
+    private void LateUpdate() => MoveCamera();
 
-    void MoveCamera()
+    private void MoveCamera()
     {
         transform.position = new Vector3(_ballTrans.position.x, transform.position.y, transform.position.z);
     }

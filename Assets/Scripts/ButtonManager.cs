@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class ButtonManager : MonoBehaviour
 {
     [SerializeField]
+    [Header("スタートボタン")]
     private Button _startButton;
 
     [SerializeField]

@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     private CancellationToken _token;
 
-    void Start()
+    private void Start()
     {
         CountStart();
 

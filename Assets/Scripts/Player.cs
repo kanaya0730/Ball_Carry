@@ -10,53 +10,59 @@ public class Player : MonoBehaviour
     public int CreateLimit => _createLimit;
 
     [SerializeField]
+    [Header("生成したいオブジェクト")]
     private GameObject _road;
 
     [SerializeField]
+    [Header("生成したオブジェクトを格納")]
     private List<GameObject> _createdRoads = new();
 
     [SerializeField]
+    [Header("生成した数")]
     private int _createCount = 0;
 
     [SerializeField]
+    [Header("生成できる数")]
     private int _createLimit;
 
     [SerializeField]
+    [Header("マウスカーソルの座標")]
     private Vector3 _mousePos;
 
     [SerializeField]
+    [Header("道の寿命カウントダウン用")]
     private float _deleteTime;
 
     [SerializeField]
+    [Header("道の寿命")]
     private float _timeLimit;
 
 
     [SerializeField]
+    [Header("道の回転数")]
     private int _changeAngle = 0;
 
     [SerializeField]
+    [Header("スコア勝負かステージ制か")]
     private bool _isEndless;
 
-
     [SerializeField]
+    [Header("生成時におかれる位置を示すためのやつ")]
     private GameObject _shadowRoad;
 
     private bool _direction;
 
-    void Start()
+    private void Start()
     {
         _road.transform.eulerAngles = new Vector3();
 
         this.UpdateAsObservable()
-            .Subscribe(_ => ControlRoad())
-            .AddTo(this);
-
-        this.UpdateAsObservable()
-            .Subscribe(_ => DeleteRoad())
-            .AddTo(this);
-
-        this.UpdateAsObservable()
-            .Subscribe(_ => ShadowCreatePos())
+            .Subscribe(_ =>
+            {
+                ControlRoad();
+                DeleteRoad();
+                ShadowCreatePos();
+            })
             .AddTo(this);
     }
 
@@ -77,7 +83,6 @@ public class Player : MonoBehaviour
             {
                 _createdRoads.RemoveAt(0);
             }
-
             _deleteTime = _timeLimit;
         }
         else _deleteTime -= Time.deltaTime;

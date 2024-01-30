@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Road : MonoBehaviour
 {
+    [SerializeField]
+    [Header("ê∂ê¨ÇµÇΩìπÇÃéıñΩ")]
+    private float _deleteTime = 1.0f;
+
     private async void Start()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(4.0f));
+        await UniTask.Delay(TimeSpan.FromSeconds(_deleteTime));
         Destroy(this.gameObject);
     }
 }

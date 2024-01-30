@@ -14,18 +14,22 @@ public class UIManager : MonoBehaviour
     private Ball _ball;
 
     [SerializeField]
+    [Header("最大生成数表示テキスト")]
     private Text _createRoadText;
 
     [SerializeField]
+    [Header("移動距離表示テキスト")]
     private Text _movingDistanceText;
 
     [SerializeField]
+    [Header("ハイスコア表示テキスト")]
     private Text _highScoreText;
 
     [SerializeField]
+    [Header("セリフ表示テキスト")]
     private Text _text;
 
-    void Start()
+    private void Start()
     {
         this.UpdateAsObservable()
             .Subscribe(_ => TextAssignment())
@@ -37,7 +41,6 @@ public class UIManager : MonoBehaviour
         _createRoadText.text = $"{_player.CreateCount}/{_player.CreateLimit}";
         _movingDistanceText.text = $"Socre\n{_ball.MovingDistance}km";
         _highScoreText.text = $"HighScore\n{_ball.HighScore}km";
-
 
         if (_ball.HighScore > _ball.MovingDistance)
             _text.text = $"HighScore更新まで{_ball.HighScore - _ball.MovingDistance}㎞";

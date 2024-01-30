@@ -163,7 +163,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 6d83ee49d0106f94a940d53d2a0ffe8c, type: 3}
+    m_Font: {fileID: 12800000, guid: 7e90e515fed3371498fb28e459e15c0d, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -252,8 +252,8 @@ MonoBehaviour:
   _createCount: 0
   _createLimit: 5
   _mousePos: {x: 0, y: 0, z: 0}
-  _deleteTime: 5
-  _timeLimit: 0
+  _deleteTime: 3
+  _timeLimit: 3
   _changeAngle: 0
   _isEndless: 1
   _shadowRoad: {fileID: 1535584718}
